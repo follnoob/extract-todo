@@ -29,6 +29,7 @@ you can install it with
 ore install it from pypi with
 
 .. code-block:: bash
+
     pip install extract-todo
 
 usage
