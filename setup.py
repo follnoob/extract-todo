@@ -25,7 +25,7 @@ setup(
     long_description=long_description,
 
     # The project's main homepage.
-    url='https://github.com/follnoob/',
+    url='https://github.com/follnoob/extrect-todo',
 
     # Author details
     author='Jens Wilberg',
