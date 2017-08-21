@@ -1,5 +1,7 @@
 extract-todo
 ============
+.. image:: https://travis-ci.org/follnoob/extrect-todo.svg?branch=master
+    :target: https://travis-ci.org/follnoob/extrect-todo
 
 extract-todo is a simple commandline script for the extraction of TODOs.
 It can extract TODOs from single-line-comments like:
