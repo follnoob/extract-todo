@@ -23,6 +23,8 @@ import codecs
 import os
 import argparse
 
+__version__ = "0.1.0"
+
 # GLOBALS
 _FILES = {
     # Dict with supproted files and their comment chars

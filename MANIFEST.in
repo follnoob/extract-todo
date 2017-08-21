@@ -1,2 +1,5 @@
 # Include files
 include LICENSE.txt
+include README.rst
+include AUTHORS.rst
+include CHANGELOG.rst
