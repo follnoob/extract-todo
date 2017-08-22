@@ -54,7 +54,7 @@ def argparser_conf():
     return parser
 
 
-def extract_todos(fname,):
+def extract_todos(fname):
     """Method for TODO extraction.
 
     Parameters
