@@ -4,7 +4,7 @@ Credits
 Development Lead
 ----------------
 
--  {{ cookiecutter.full\_name }} <{{ cookiecutter.email }}>
+-  Jens Wilberg <jens_wilberg@outlook.com>
 
 Contributors
 ------------
