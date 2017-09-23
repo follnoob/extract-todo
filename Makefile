@@ -1,25 +1,33 @@
+# Config
 VERSION=minor
-.PHONY: all dist sdist wheel bump test
-all: dist
+PYTHON=python
+PYPI_SERVER=pypi
 
+.PHONY: dist
 dist: sdist wheel
 
+.PHONY: wheel
 wheel:
-	python setup.py bdist_wheel
+	@${PYTHON} setup.py bdist_wheel
 
+.PHONY: sdist
 sdist:
-	python setup.py sdist
+	@${PYTHON} setup.py sdist
 
-# Run tests
-test:
-	python3 -m nose
+.PHONY: tests
+tests: # Run tests
+	@${PYTHON} -m nose
 
-# Bump version
-bump:
-	bumpversion ${VERSION}
+.PHONY: bump
+bump: # Bump version
+	@bumpversion ${VERSION}
 
-# Clean environment
+.PHONY: release
+release: clean dist # Package and upload release
+	@twine upload -r $(PYPI_SERVER) dist/*
+
+.PHONY: clean
 clean:
-	-rm -rf dist
-	-rm -rf build
-	-rm -rf *.egg-info
+	@-rm -rf dist
+	@-rm -rf build
+	@-rm -rf *.egg-info
