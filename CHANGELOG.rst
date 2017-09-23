@@ -1,7 +1,7 @@
 Changelog
 =========
 
-Version 0.1.1 from 2017/xx/xx
+Version 0.1.1 from 2017/09/23
 -----------------------------
 - Added CHANGELOG.rst
 - Added AUTHORS.rst
