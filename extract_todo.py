@@ -45,12 +45,15 @@ def argparser_conf():
     -------
     ArgumentParser
         returns the ergumentparser
+
     """
     parser = argparse.ArgumentParser(description="Extracts TODOs from a given file.\
         TODOs are only recognized, if there are at the beginning of a single \
         line comment. Supported files are LaTex tex-files and Python-files. \
         Currently only 'utf-8' file-encoding is supported.")
     parser.add_argument("fname", metavar="FILENAME", help="Path to file.")
+    parser.add_argument('-v', '--version', action='version',
+                        version='%(prog)s {}'.format(__version__))
     return parser
 
 
@@ -66,6 +69,7 @@ def extract_todos(fname):
     -------
     list of str
         List with TODOs.
+
     """
     global _FILES
     ext = os.path.splitext(fname)
