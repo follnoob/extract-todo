@@ -1,29 +1,25 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+# Copyright (C) 2017 - 2019 Jens Wilberg <jens_wilberg@outlook.com>
 #
-# Copyright (C) 2017 Jens Wilberg
+# This file is part of extract-todo.
 #
-# extract_todo.py is free software: you can redistribute it and/or modify
+# extract-todo is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
 #
-# extract_todo.py is distributed in the hope that it will be useful,
+# extract-todo is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
-# along with extract_todo.py.  If not, see <http://www.gnu.org/licenses/>.
-"""Tool for extracting TODOs from text/sorce files.
+# along with extract-todo.  If not, see <http://www.gnu.org/licenses/>.
+"""Tool for extracting TODOs from text/source files.
 
 Currently only 'utf-8' file-encoding is supported.
 """
 import codecs
 import os
-import argparse
-
-__version__ = "0.1.1"
 
 # GLOBALS
 _FILES = {
@@ -36,25 +32,6 @@ _FILES = {
     ".cpp": "//",
     ".js": "//"
 }
-
-
-def argparser_conf():
-    """Configuration for argparser.
-
-    Returns
-    -------
-    ArgumentParser
-        returns the ergumentparser
-
-    """
-    parser = argparse.ArgumentParser(description="Extracts TODOs from a given file.\
-        TODOs are only recognized, if there are at the beginning of a single \
-        line comment. Supported files are LaTex tex-files and Python-files. \
-        Currently only 'utf-8' file-encoding is supported.")
-    parser.add_argument("fname", metavar="FILENAME", help="Path to file.")
-    parser.add_argument('-v', '--version', action='version',
-                        version='%(prog)s {}'.format(__version__))
-    return parser
 
 
 def extract_todos(fname):
@@ -90,24 +67,3 @@ def extract_todos(fname):
                 todos.append("%s:%d\n\t%s" %
                              (os.path.basename(fname), lineCount, todo))
     return todos
-
-
-def main():
-    """Main-function."""
-    parser = argparser_conf()
-    args = parser.parse_args()
-    fname = args.fname
-    try:
-        todos = extract_todos(fname)
-    except KeyError:
-        ext = os.path.splitext(fname)
-        print("%s-files are not supported!" % ext[1])
-        exit(1)
-    if todos:
-        print('\n'.join(todos))
-    else:
-        print("There are no TODOs.")
-
-
-if __name__ == '__main__':
-    main()
