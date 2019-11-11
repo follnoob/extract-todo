@@ -19,7 +19,6 @@
 Currently only 'utf-8' file-encoding is supported.
 """
 import re
-import os
 
 from .parser import ParserFactory
 
@@ -45,5 +44,5 @@ def extract_todos(fname):
         match = re.search(r"TODO[ |\t]*(.*)$", comment[2])
         if match:
             todos.append("{}:{}\n\t{}".format(
-                os.path.basename(comment[0]), comment[1], match.group(1)))
+                comment[0], comment[1], match.group(1)))
     return todos
