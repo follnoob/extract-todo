@@ -18,7 +18,6 @@
 
 Currently only 'utf-8' file-encoding is supported.
 """
-import codecs
 import os
 
 # GLOBALS
@@ -52,7 +51,7 @@ def extract_todos(fname):
     ext = os.path.splitext(fname)
     comm_char = _FILES[ext[1]]
     todos = []
-    with codecs.open(fname, "r", "utf-8") as f:
+    with open(fname, "r") as f:
         lineCount = 0
         for line in f:
             lineCount += 1
