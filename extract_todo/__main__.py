@@ -34,15 +34,15 @@ def main():
             the beginning of a single line comment. Supported files are LaTex\
             tex-files and Python-files. Currently only 'utf-8' file-encoding is\
             supported.")
-    parser.add_argument("fname", metavar="FILENAME", help="Path to file.")
+    parser.add_argument("files", metavar="file",
+                        help="Path to file.", nargs='+')
     parser.add_argument('-v', '--version', action='version',
                         version='%(prog)s {}'.format(__version__))
     args = parser.parse_args()
     try:
-        fname = args.fname
-        todos = Printer(extract_todos(fname))
+        todos = [str(Printer(extract_todos(fname))) for fname in args.files]
         if todos:
-            print(todos)
+            print('\n'.join(todos))
         else:
             print("There are no TODOs.")
     except ValueError as e:
