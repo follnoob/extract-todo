@@ -22,7 +22,7 @@ Currently only 'utf-8' file-encoding is supported.
 import argparse
 
 from extract_todo.__version__ import VERSION_STRING
-from extract_todo.extractor import extract_todos
+from extract_todo.extractor import extract_todos, Printer
 
 __version__ = VERSION_STRING
 
@@ -40,9 +40,9 @@ def main():
     args = parser.parse_args()
     try:
         fname = args.fname
-        todos = extract_todos(fname)
+        todos = Printer(extract_todos(fname))
         if todos:
-            print('\n'.join(todos))
+            print(todos)
         else:
             print("There are no TODOs.")
     except ValueError as e:

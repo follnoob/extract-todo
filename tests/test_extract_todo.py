@@ -39,48 +39,48 @@ class Test(unittest.TestCase):
     def test_latex(self):
         """Test tex-file."""
         fpath = os.path.join(self.path, "test.tex")
-        corr = ["{}:2\n\ttest".format(fpath), "{}:3\n\ttest 2".format(fpath)]
+        corr = [(fpath, 2, "test"), (fpath, 3, "test 2")]
         todos = extract_todo.extract_todos(fpath)
         self.assertListEqual(todos, corr)
 
     def test_py(self):
         """Test py-file."""
         fpath = os.path.join(self.path, "test.py")
-        corr = ["{}:1\n\ttest".format(fpath), "{}:5\n\ttest 2".format(fpath)]
+        corr = [(fpath, 1, "test"), (fpath, 5, "test 2")]
         todos = extract_todo.extract_todos(fpath)
         self.assertListEqual(todos, corr)
 
     def test_h(self):
         """Test h-file."""
         fpath = os.path.join(self.path, "test.h")
-        corr = ["{}:1\n\ttest".format(fpath), "{}:3\n\ttest 2".format(fpath)]
+        corr = [(fpath, 1, "test"), (fpath, 3, "test 2")]
         todos = extract_todo.extract_todos(fpath)
         self.assertListEqual(todos, corr)
 
     def test_c(self):
         """Test c-file."""
         fpath = os.path.join(self.path, "test.c")
-        corr = ["{}:1\n\ttest".format(fpath), "{}:7\n\ttest 2".format(fpath)]
+        corr = [(fpath, 1, "test"), (fpath, 7, "test 2")]
         todos = extract_todo.extract_todos(fpath)
         self.assertListEqual(todos, corr)
 
     def test_hpp(self):
         """Test hpp-file."""
         fpath = os.path.join(self.path, "test.hpp")
-        corr = ["{}:1\n\ttest".format(fpath), "{}:3\n\ttest 2".format(fpath)]
+        corr = [(fpath, 1, "test"), (fpath, 3, "test 2")]
         todos = extract_todo.extract_todos(fpath)
         self.assertListEqual(todos, corr)
 
     def test_cpp(self):
         """Test cpp-file."""
         fpath = os.path.join(self.path, "test.cpp")
-        corr = ["{}:1\n\ttest".format(fpath), "{}:7\n\ttest 2".format(fpath)]
+        corr = [(fpath, 1, "test"), (fpath, 7, "test 2")]
         todos = extract_todo.extract_todos(fpath)
         self.assertListEqual(todos, corr)
 
     def test_js(self):
         """Test js-file."""
         fpath = os.path.join(self.path, "test.js")
-        corr = ["{}:1\n\ttest".format(fpath), "{}:4\n\ttest 2".format(fpath)]
+        corr = [(fpath, 1, "test"), (fpath, 4, "test 2")]
         todos = extract_todo.extract_todos(fpath)
         self.assertListEqual(todos, corr)

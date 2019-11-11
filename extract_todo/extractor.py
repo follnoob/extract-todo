@@ -23,12 +23,12 @@ import re
 from .parser import ParserFactory
 
 
-def extract_todos(fname):
+def extract_todos(filename: str) -> list:
     """Method for TODO extraction.
 
     Parameters
     ----------
-    fname : str
+    filename : str
         Path to file.
 
     Returns
@@ -38,11 +38,41 @@ def extract_todos(fname):
 
     """
     factory = ParserFactory()
-    parser = factory.create(fname)
+    parser = factory.create(filename)
     todos = []
-    for comment in parser.parse():
-        match = re.search(r"TODO[ |\t]*(.*)$", comment[2])
+    for _, line, text in parser.parse():
+        match = re.search(r"TODO[ |\t]*(.*)$", text)
         if match:
-            todos.append("{}:{}\n\t{}".format(
-                comment[0], comment[1], match.group(1)))
+            todos.append((filename, line, match.group(1)))
     return todos
+
+
+class Printer:
+    """Pretty print todos.
+
+    This class formats the todos into a pretty string for printing. The string
+    has the following format:
+
+    ```shell
+    path/to/file
+        LINE 1:     text
+        LINE 5:     more text
+    ```
+
+    Parameter
+    ---------
+    todos : list
+        list of todo tuples with the format (filename, linenumber, text)
+    """
+
+    def __init__(self, todos: list):
+        self._todos = todos
+
+    def __str__(self):
+        """Transform todo list to printable string."""
+        lines = ""
+        filename = ""
+        for fname, line, text in self._todos:
+            filename = fname
+            lines += "  LINE {}:\t{}\n".format(line, text)
+        return "{}\n{}".format(filename, lines)
