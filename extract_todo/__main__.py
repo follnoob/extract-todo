@@ -19,7 +19,6 @@
 
 Currently only 'utf-8' file-encoding is supported.
 """
-import os
 import argparse
 
 from extract_todo.__version__ import VERSION_STRING
@@ -39,17 +38,15 @@ def main():
     parser.add_argument('-v', '--version', action='version',
                         version='%(prog)s {}'.format(__version__))
     args = parser.parse_args()
-    fname = args.fname
     try:
+        fname = args.fname
         todos = extract_todos(fname)
-    except KeyError:
-        ext = os.path.splitext(fname)
-        print("%s-files are not supported!" % ext[1])
-        exit(1)
-    if todos:
-        print('\n'.join(todos))
-    else:
-        print("There are no TODOs.")
+        if todos:
+            print('\n'.join(todos))
+        else:
+            print("There are no TODOs.")
+    except ValueError as e:
+        print(e)
 
 
 if __name__ == "__main__":

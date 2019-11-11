@@ -1,3 +1,4 @@
+#
 # Copyright (C) 2017 - 2019 Jens Wilberg <jens_wilberg@outlook.com>
 #
 # This file is part of extract-todo.
@@ -14,36 +15,19 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with extract-todo.  If not, see <http://www.gnu.org/licenses/>.
-"""Tool for extracting TODOs from text/source files.
-
-Currently only 'utf-8' file-encoding is supported.
-"""
-import re
-import os
-
-from .parser import ParserFactory
+"""This module contains the parser for latex files."""
+from .default_parser import DefaultParser
 
 
-def extract_todos(fname):
-    """Method for TODO extraction.
+class LatexParser(DefaultParser):
+    """Parser class for latex files.
 
     Parameters
     ----------
     fname : str
-        Path to file.
-
-    Returns
-    -------
-    list of str
-        List with TODOs.
-
+        filename
     """
-    factory = ParserFactory()
-    parser = factory.create(fname)
-    todos = []
-    for comment in parser.parse():
-        match = re.search(r"TODO[ |\t]*(.*)$", comment[2])
-        if match:
-            todos.append("{}:{}\n\t{}".format(
-                os.path.basename(comment[0]), comment[1], match.group(1)))
-    return todos
+
+    def __init__(self, fname: str):
+        self._comment = r"%.+"
+        self._file = fname
