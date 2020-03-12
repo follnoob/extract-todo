@@ -91,3 +91,10 @@ class Test(unittest.TestCase):
         corr = [(fpath, 1, "test"), (fpath, 7, "test 2")]
         todos = extract_todo.extract_todos(fpath)
         self.assertListEqual(todos, corr)
+
+    def test_go(self):
+        """Test go-file."""
+        fpath = os.path.join(self.path, "test.go")
+        corr = [(fpath, 5, "test"), (fpath, 7, "test 2")]
+        todos = extract_todo.extract_todos(fpath)
+        self.assertListEqual(todos, corr)
