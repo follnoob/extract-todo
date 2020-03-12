@@ -1,12 +1,9 @@
-Credits
-=======
+# Credits
 
-Development Lead
-----------------
+## Development Lead
 
 -  Jens Wilberg <jens_wilberg@outlook.com>
 
-Contributors
-------------
+## Contributors
 
 None yet. Why not be the first?
