@@ -1,5 +1,4 @@
 # Config
-VERSION=minor
 PYTHON=python
 PYPI_SERVER=pypi
 
@@ -18,9 +17,17 @@ sdist:
 tests: # Run tests
 	@${PYTHON} -m nose
 
-.PHONY: bump
-bump: # Bump version
-	@bumpversion ${VERSION}
+.PHONY: major
+major: # Bump version
+	@bumpversion major
+
+.PHONY: minor
+minor: # Bump version
+	@bumpversion minor
+
+.PHONY: patch
+patch: # Bump version
+	@bumpversion patch
 
 .PHONY: release
 release: clean dist # Package and upload release
