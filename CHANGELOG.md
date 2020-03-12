@@ -1,5 +1,12 @@
 # Changelog
 
+## Version 0.2.0 from 2020/03/12
+
+- Add support for c#, go, ruby, java
+- Rework printing
+- Drop support for python 2.7
+- Code refactoring
+
 ## Version 0.1.1 from 2017/09/23
 
 - Added CHANGELOG.rst
