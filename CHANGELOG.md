@@ -1,6 +1,6 @@
 # Changelog
 
-## Version 0.2.1 from 2020/03/12
+## Version 0.2.2 from 2020/03/12
 
 - Add markdown support for pypi
 
