@@ -1,62 +1,49 @@
-extract-todo
-============
-.. image:: https://travis-ci.org/follnoob/extract-todo.svg?branch=master
-    :target: https://travis-ci.org/follnoob/extract-todo
+# extract-todo
+
+[![travis](https://travis-ci.org/follnoob/extract-todo.svg?branch=master)](https://travis-ci.org/follnoob/extract-todo)
 
 extract-todo is a simple commandline script for the extraction of TODOs.
 It can extract TODOs from single-line-comments like:
 
-.. code-block:: bash
-
+```python
     # TODO something todo
+```
 
 or
 
-.. code-block:: bash
-
+```python
     #TODO something todo
+```
 
 It prints the file, line number and the TODO text.
 
-installation
-------------
+## installation
+
 
 You need python3+ to run this script. It is no installation required but
 you can install it with
-
-.. code-block:: bash
 
     python setup.py install
 
 ore install it from pypi with
 
-.. code-block:: bash
-
     pip install extract-todo
 
-usage
------
+## usage
 
 You can use this script with the command
-
-::
 
     python extract_todo.py /path/to/file
 
 or after installation
 
-::
-
     extract-todo /path/to/file
 
 It prints the filename, line number and the TODO text.
 
-Author and License
-------------------
+## Author and License
 
 Copyright (C) Jens Wilberg July 2017
-
-::
 
     extract_todo.py is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
