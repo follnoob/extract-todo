@@ -28,16 +28,17 @@ class ParserFactory():
     def __init__(self):
         self._builders = {
             # Files with default parser
-            ".h": DefaultParser,    # C/C++
-            ".c": DefaultParser,    # C
-            ".hpp": DefaultParser,  # C++
-            ".cpp": DefaultParser,  # C++
-            ".js": DefaultParser,   # Javascript
-            ".cs": DefaultParser,   # C#
-            ".go": DefaultParser,   # go
+            ".h": DefaultParser,     # C/C++
+            ".c": DefaultParser,     # C
+            ".hpp": DefaultParser,   # C++
+            ".cpp": DefaultParser,   # C++
+            ".js": DefaultParser,    # Javascript
+            ".cs": DefaultParser,    # C#
+            ".go": DefaultParser,    # go
+            ".java": DefaultParser,  # java
             # Files with custom parser
-            ".tex": LatexParser,    # Latex
-            ".py": PythonParser     # Python
+            ".tex": LatexParser,     # Latex
+            ".py": PythonParser      # Python
         }
 
     def create(self, fname: str):
