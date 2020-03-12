@@ -105,3 +105,10 @@ class Test(unittest.TestCase):
         corr = [(fpath, 1, "test"), (fpath, 4, "test 2")]
         todos = extract_todo.extract_todos(fpath)
         self.assertListEqual(todos, corr)
+
+    def test_ruby(self):
+        """Test ruby-file."""
+        fpath = os.path.join(self.path, "test.rb")
+        corr = [(fpath, 1, "test"), (fpath, 2, "test 2")]
+        todos = extract_todo.extract_todos(fpath)
+        self.assertListEqual(todos, corr)
