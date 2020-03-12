@@ -84,3 +84,10 @@ class Test(unittest.TestCase):
         corr = [(fpath, 1, "test"), (fpath, 4, "test 2")]
         todos = extract_todo.extract_todos(fpath)
         self.assertListEqual(todos, corr)
+
+    def test_cs(self):
+        """Test cs-file."""
+        fpath = os.path.join(self.path, "test.cs")
+        corr = [(fpath, 1, "test"), (fpath, 7, "test 2")]
+        todos = extract_todo.extract_todos(fpath)
+        self.assertListEqual(todos, corr)
