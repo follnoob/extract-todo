@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 0.2.1 from 2020/03/12
+
+- Add markdown support for pypi
+
 ## Version 0.2.0 from 2020/03/12
 
 - Add support for c#, go, ruby, java

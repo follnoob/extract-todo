@@ -22,6 +22,7 @@ setup(
 
     description='extract TODOs',
     long_description=long_description,
+    long_description_content_type="text/markdown",
 
     # The project's main homepage.
     url='https://github.com/follnoob/extrect-todo',
