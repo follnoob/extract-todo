@@ -35,10 +35,11 @@ class ParserFactory():
             ".js": DefaultParser,    # Javascript
             ".cs": DefaultParser,    # C#
             ".go": DefaultParser,    # go
-            ".java": DefaultParser,  # java
+            ".java": DefaultParser,  # Java
             # Files with custom parser
             ".tex": LatexParser,     # Latex
-            ".py": PythonParser      # Python
+            ".py": PythonParser,     # Python
+            ".rb": PythonParser      # Ruby
         }
 
     def create(self, fname: str):
