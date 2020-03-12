@@ -34,6 +34,7 @@ class ParserFactory():
             ".cpp": DefaultParser,  # C++
             ".js": DefaultParser,   # Javascript
             ".cs": DefaultParser,   # C#
+            ".go": DefaultParser,   # go
             # Files with custom parser
             ".tex": LatexParser,    # Latex
             ".py": PythonParser     # Python
