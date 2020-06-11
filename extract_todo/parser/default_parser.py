@@ -22,7 +22,7 @@ import re
 class DefaultParser:
     """Defaultparser class.
 
-    This class represents a default parser, which can parse all files wit '//'
+    This class represents a default parser, which can parse all files with '//'
     as single line comment chars.
 
     Parameters
