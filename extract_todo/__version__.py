@@ -15,4 +15,4 @@
 # You should have received a copy of the GNU General Public License
 # along with extract-todo.  If not, see <http://www.gnu.org/licenses/>.
 """Program Version."""
-VERSION_STRING = "0.2.2"
+VERSION_STRING = "0.2.3"

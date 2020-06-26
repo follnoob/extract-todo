@@ -18,7 +18,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='extract-todo',
-    version="0.2.2",
+    version="0.2.3",
 
     description='extract TODOs',
     long_description=long_description,
