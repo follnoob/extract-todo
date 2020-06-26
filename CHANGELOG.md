@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 0.2.3 from 2020/06/26
+
+- New version to test Github Deploy Action
+
 ## Version 0.2.2 from 2020/03/12
 
 - Add markdown support for pypi
