@@ -1,6 +1,7 @@
 # extract-todo
 
 [![travis](https://travis-ci.org/follnoob/extract-todo.svg?branch=master)](https://travis-ci.org/follnoob/extract-todo)
+![Build](https://github.com/follnoob/extract-todo/workflows/Python%20application/badge.svg?branch=master)
 
 extract-todo is a simple commandline script for the extraction of TODOs.
 It can extract TODOs from single-line-comments like:
