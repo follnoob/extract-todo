@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 0.3.1 from 2020/06/26
+
+- Fixed outdated Readme
+
 ## Version 0.3.0 from 2020/06/26
 
 - Updated Readme
