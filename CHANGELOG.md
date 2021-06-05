@@ -1,18 +1,23 @@
 # Changelog
 
+## Version 0.3.0 from 2020/06/26
+
+- Updated Readme
+- Use new packaging
+
 ## Version 0.2.3 from 2020/06/26
 
 - New version to test Github Deploy Action
 
 ## Version 0.2.2 from 2020/03/12
 
-- Add markdown support for pypi
+- Added markdown support for pypi
 
 ## Version 0.2.0 from 2020/03/12
 
-- Add support for c#, go, ruby, java
-- Rework printing
-- Drop support for python 2.7
+- Added support for c#, go, ruby, java
+- Reworked printing
+- Dropped support for python 2.7
 - Code refactoring
 
 ## Version 0.1.1 from 2017/09/23
