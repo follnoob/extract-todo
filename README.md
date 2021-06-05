@@ -10,12 +10,6 @@ It can extract TODOs from single-line-comments like:
     # TODO something todo
 ```
 
-or
-
-```python
-    #TODO something todo
-```
-
 It prints the file, line number and the TODO text.
 
 ## installation
@@ -26,7 +20,7 @@ you can install it with
 
     python setup.py install
 
-ore install it from pypi with
+or install it from pypi with
 
     pip install extract-todo
 
@@ -34,7 +28,7 @@ ore install it from pypi with
 
 You can use this script with the command
 
-    python extract_todo.py /path/to/file
+    python -m extract_todo /path/to/file
 
 or after installation
 
@@ -44,7 +38,7 @@ It prints the filename, line number and the TODO text.
 
 ## Author and License
 
-Copyright (C) Jens Wilberg July 2017
+Copyright (C) Jens Wilberg July 2021
 
     extract_todo.py is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
