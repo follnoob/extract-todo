@@ -1,0 +1,12 @@
+# Linting and formatting
+flake8
+autopep8
+
+# Unittests
+nose
+
+# Build
+build
+
+# Other
+bumpversion
