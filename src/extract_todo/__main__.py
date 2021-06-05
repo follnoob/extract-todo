@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (C) 2017 - 2019 Jens Wilberg <jens_wilberg@outlook.com>
+# Copyright (C) 2017 - 2021 Jens Wilberg <jens_wilberg@outlook.com>
 #
 # This file is part of extract-todo.
 #

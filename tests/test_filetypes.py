@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# Copyright (C) 2017 - 2019 Jens Wilberg
+# Copyright (C) 2017 - 2021 Jens Wilberg
 #
 # This file is part of extract_todo.
 #
