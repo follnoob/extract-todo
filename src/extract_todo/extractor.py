@@ -20,11 +20,12 @@ Currently only 'utf-8' file-encoding is supported.
 """
 import re
 from pathlib import Path
+from typing import List, Tuple
 
 from .parser import ParserFactory
 
 
-def extract_todos(fpath: Path) -> list:
+def extract_todos(fpath: Path) -> List[Tuple[Path, int, str]]:
     """Method for TODO extraction.
 
     Parameters
@@ -66,7 +67,7 @@ class Printer:
         list of todo tuples with the format (filepath, linenumber, text)
     """
 
-    def __init__(self, todos: list):
+    def __init__(self, todos: List[Tuple[Path, int, str]]):
         self._todos = todos
 
     def __str__(self):

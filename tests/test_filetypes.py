@@ -20,6 +20,7 @@
 """Tests for 'extract_todo'."""
 import unittest
 from pathlib import Path
+from typing import List, Tuple
 
 import extract_todo
 from pyfakefs.fake_filesystem_unittest import Patcher
@@ -36,7 +37,7 @@ class Test(unittest.TestCase):
         """Tear down test fixtures, if any."""
         pass
 
-    def extract_todo(self, file, content, expected):
+    def extract_todo(self, file: Path, content: str, expected: List[Tuple[Path, int, str]]):
         """DOCSTRING."""
         with Patcher() as patcher:
             patcher.fs.create_file(file, contents=content)

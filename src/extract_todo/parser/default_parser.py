@@ -18,6 +18,7 @@
 """This module contains the default parser for files."""
 import re
 from pathlib import Path
+from typing import List, Tuple
 
 
 class DefaultParser:
@@ -36,7 +37,7 @@ class DefaultParser:
         self._comment = r"//.+"
         self._file = fpath
 
-    def parse(self) -> list:
+    def parse(self) -> List[Tuple[Path, int, str]]:
         """Parse file for comments.
 
         Returns
