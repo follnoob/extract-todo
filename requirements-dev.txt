@@ -1,12 +1,12 @@
 # Linting and formatting
-flake8
-autopep8
+flake8==4.0.1
+autopep8==1.6.0
 
 # Unittests
-nose
+nose==1.3.7
 
 # Build
-build
+build==0.7.0
 
 # Other
-bumpversion
+bumpversion==0.6.0
