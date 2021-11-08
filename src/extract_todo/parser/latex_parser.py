@@ -16,6 +16,8 @@
 # You should have received a copy of the GNU General Public License
 # along with extract-todo.  If not, see <http://www.gnu.org/licenses/>.
 """This module contains the parser for latex files."""
+from pathlib import Path
+
 from .default_parser import DefaultParser
 
 
@@ -24,10 +26,10 @@ class LatexParser(DefaultParser):
 
     Parameters
     ----------
-    fname : str
+    fpath : Path
         filename
     """
 
-    def __init__(self, fname: str):
+    def __init__(self, fpath: Path):
         self._comment = r"%.+"
-        self._file = fname
+        self._file = fpath

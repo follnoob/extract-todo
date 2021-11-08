@@ -18,8 +18,8 @@
 # You should have received a copy of the GNU General Public License
 # along with extract_todo.  If not, see <http://www.gnu.org/licenses/>.
 """Tests for 'extract_todo'."""
-import os
 import unittest
+from pathlib import Path
 
 import extract_todo
 from pyfakefs.fake_filesystem_unittest import Patcher
@@ -30,8 +30,6 @@ class Test(unittest.TestCase):
 
     def setUp(self):
         """Set up test fixtures, if any."""
-        tmp = os.path.dirname(os.path.realpath(__file__))
-        self.path = os.path.join(tmp, "files")
         pass
 
     def tearDown(self):
@@ -53,7 +51,7 @@ class Test(unittest.TestCase):
 Test % TODO test 2
 \\end{{document}}
 """
-        fpath = os.path.join(self.path, "test.tex")
+        fpath = Path("test.tex")
         corr = [(fpath, 2, "test"), (fpath, 3, "test 2")]
 
         self.extract_todo(fpath, content, corr)
@@ -70,7 +68,7 @@ def main():
 if __name__ == '__main__':
     main()
 """
-        fpath = os.path.join(self.path, "test.py")
+        fpath = Path("test.py")
         corr = [(fpath, 1, "test"), (fpath, 4, "test 2")]
 
         self.extract_todo(fpath, content, corr)
@@ -82,7 +80,7 @@ if __name__ == '__main__':
 
 #include <stdio.h> //TODO test 2
 """
-        fpath = os.path.join(self.path, "test.h")
+        fpath = Path("test.h")
         corr = [(fpath, 1, "test"), (fpath, 3, "test 2")]
 
         self.extract_todo(fpath, content, corr)
@@ -100,7 +98,7 @@ int main()
     return 0;
 }
 """
-        fpath = os.path.join(self.path, "test.c")
+        fpath = Path("test.c")
         corr = [(fpath, 1, "test"), (fpath, 7, "test 2")]
 
         self.extract_todo(fpath, content, corr)
@@ -112,7 +110,7 @@ int main()
 
 #include <iostream> //TODO test 2
 """
-        fpath = os.path.join(self.path, "test.hpp")
+        fpath = Path("test.hpp")
         corr = [(fpath, 1, "test"), (fpath, 3, "test 2")]
 
         self.extract_todo(fpath, content, corr)
@@ -130,7 +128,7 @@ int main()
     return 0;
 }
 """
-        fpath = os.path.join(self.path, "test.cpp")
+        fpath = Path("test.cpp")
         corr = [(fpath, 1, "test"), (fpath, 7, "test 2")]
 
         self.extract_todo(fpath, content, corr)
@@ -143,7 +141,7 @@ int main()
 var foo = "Hello World!"
 console.log(foo) //TODO test 2
 """
-        fpath = os.path.join(self.path, "test.js")
+        fpath = Path("test.js")
         corr = [(fpath, 1, "test"), (fpath, 4, "test 2")]
 
         self.extract_todo(fpath, content, corr)
@@ -162,7 +160,7 @@ namespace HelloWorld
     }
 }
 """
-        fpath = os.path.join(self.path, "test.cs")
+        fpath = Path("test.cs")
         corr = [(fpath, 1, "test"), (fpath, 7, "test 2")]
 
         self.extract_todo(fpath, content, corr)
@@ -179,7 +177,7 @@ func main() {
     fmt.Println("hello world") // TODO test 2
 }
 """
-        fpath = os.path.join(self.path, "test.go")
+        fpath = Path("test.go")
         corr = [(fpath, 5, "test"), (fpath, 7, "test 2")]
 
         self.extract_todo(fpath, content, corr)
@@ -194,7 +192,7 @@ class HelloWorld {
     }
 }
 """
-        fpath = os.path.join(self.path, "test.java")
+        fpath = Path("test.java")
         corr = [(fpath, 1, "test"), (fpath, 4, "test 2")]
 
         self.extract_todo(fpath, content, corr)
@@ -205,7 +203,7 @@ class HelloWorld {
 # TODO test
 puts 'Hello, world!' # TODO test 2
 """
-        fpath = os.path.join(self.path, "test.rb")
+        fpath = Path("test.rb")
         corr = [(fpath, 1, "test"), (fpath, 2, "test 2")]
 
         self.extract_todo(fpath, content, corr)

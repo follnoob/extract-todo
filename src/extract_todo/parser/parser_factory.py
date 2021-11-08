@@ -16,11 +16,11 @@
 # You should have received a copy of the GNU General Public License
 # along with extract-todo.  If not, see <http://www.gnu.org/licenses/>.
 """This module contains the parser factory."""
-import os
+from pathlib import Path
 
 from .default_parser import DefaultParser
-from .python_parser import PythonParser
 from .latex_parser import LatexParser
+from .python_parser import PythonParser
 
 
 class ParserFactory():
@@ -42,13 +42,13 @@ class ParserFactory():
             ".rb": PythonParser      # Ruby
         }
 
-    def create(self, fname: str):
+    def create(self, fpath: Path):
         """Create a appropriated parser for the file."""
-        if os.path.isdir(fname):
-            raise ValueError("'{}' is a folder!".format(fname))
-        file_extension = os.path.splitext(fname)[1]
+        if fpath.is_dir():
+            raise ValueError("'{}' is a folder!".format(str(fpath)))
+        file_extension = fpath.suffix
         builder = self._builders.get(file_extension)
         if not builder:
             raise ValueError(
                 "'{}'-files are not supported!".format(file_extension))
-        return builder(fname)
+        return builder(fpath)

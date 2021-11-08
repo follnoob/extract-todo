@@ -17,6 +17,7 @@
 # along with extract-todo.  If not, see <http://www.gnu.org/licenses/>.
 """This module contains the default parser for files."""
 import re
+from pathlib import Path
 
 
 class DefaultParser:
@@ -27,13 +28,13 @@ class DefaultParser:
 
     Parameters
     ----------
-    fname : str
+    fpath : Path
         filename
     """
 
-    def __init__(self, fname: str):
+    def __init__(self, fpath: Path):
         self._comment = r"//.+"
-        self._file = fname
+        self._file = fpath
 
     def parse(self) -> list:
         """Parse file for comments.
@@ -45,7 +46,7 @@ class DefaultParser:
             (filename, linenumber, string)
         """
         comments = []
-        with open(self._file, "r") as f:
+        with self._file.open("r") as f:
             for line, text in enumerate(f, 1):
                 match = re.search(self._comment, text)
                 if match:

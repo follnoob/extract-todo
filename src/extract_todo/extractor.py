@@ -19,31 +19,32 @@
 Currently only 'utf-8' file-encoding is supported.
 """
 import re
+from pathlib import Path
 
 from .parser import ParserFactory
 
 
-def extract_todos(filename: str) -> list:
+def extract_todos(fpath: Path) -> list:
     """Method for TODO extraction.
 
     Parameters
     ----------
-    filename : str
+    fpath : Path
         Path to file.
 
     Returns
     -------
-    list of str
+    list of tuple
         List with TODOs.
 
     """
     factory = ParserFactory()
-    parser = factory.create(filename)
+    parser = factory.create(fpath)
     todos = []
     for _, line, text in parser.parse():
         match = re.search(r"TODO[ |\t]*(.*)$", text)
         if match:
-            todos.append((filename, line, match.group(1)))
+            todos.append((fpath, line, match.group(1)))
     return todos
 
 
@@ -62,7 +63,7 @@ class Printer:
     Parameter
     ---------
     todos : list
-        list of todo tuples with the format (filename, linenumber, text)
+        list of todo tuples with the format (filepath, linenumber, text)
     """
 
     def __init__(self, todos: list):
@@ -71,8 +72,8 @@ class Printer:
     def __str__(self):
         """Transform todo list to printable string."""
         lines = ""
-        filename = ""
-        for fname, line, text in self._todos:
-            filename = fname
+        filepath = ""
+        for fpath, line, text in self._todos:
+            filepath = str(fpath)
             lines += "  LINE {}:\t{}\n".format(line, text)
-        return "{}\n{}".format(filename, lines)
+        return "{}\n{}".format(filepath, lines)
