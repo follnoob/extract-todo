@@ -20,9 +20,10 @@
 Currently only 'utf-8' file-encoding is supported.
 """
 import argparse
+from pathlib import Path
 
 from extract_todo.__version__ import VERSION_STRING
-from extract_todo.extractor import extract_todos, Printer
+from extract_todo.extractor import Printer, extract_todos
 
 __version__ = VERSION_STRING
 
@@ -34,10 +35,8 @@ def main():
             the beginning of a single line comment. Supported files are LaTex\
             tex-files and Python-files. Currently only 'utf-8' file-encoding is\
             supported.")
-    parser.add_argument("files", metavar="file",
-                        help="Path to file.", nargs='+')
-    parser.add_argument('-v', '--version', action='version',
-                        version='%(prog)s {}'.format(__version__))
+    parser.add_argument("files", metavar="file", type=Path, help="Path to file.", nargs='+')
+    parser.add_argument('-v', '--version', action='version', version='%(prog)s {}'.format(__version__))
     args = parser.parse_args()
     try:
         todos = [str(Printer(extract_todos(fname))) for fname in args.files]
