@@ -18,20 +18,23 @@
 # You should have received a copy of the GNU General Public License
 # along with extract_todo.  If not, see <http://www.gnu.org/licenses/>.
 """Tests for 'extract_todo'."""
-import unittest
+import sys
 from pathlib import Path
 from typing import List, Tuple
 
-import extract_todo
-from pyfakefs.fake_filesystem_unittest import Patcher
+from pyfakefs.fake_filesystem_unittest import TestCase
+
+# Import module to test
+sys.path.append(str(Path(__file__).resolve().parent.parent.joinpath("src")))
+from extract_todo import extract_todos  # noqa: E402
 
 
-class Test(unittest.TestCase):
+class Test(TestCase):
     """Tests for 'extract_todo' package."""
 
     def setUp(self):
         """Set up test fixtures, if any."""
-        pass
+        self.setUpPyfakefs()
 
     def tearDown(self):
         """Tear down test fixtures, if any."""
@@ -39,10 +42,9 @@ class Test(unittest.TestCase):
 
     def extract_todo(self, file: Path, content: str, expected: List[Tuple[Path, int, str]]):
         """DOCSTRING."""
-        with Patcher() as patcher:
-            patcher.fs.create_file(file, contents=content)
-            todos = extract_todo.extract_todos(file)
-            self.assertListEqual(todos, expected)
+        self.fs.create_file(file, contents=content)
+        todos = extract_todos(file)
+        self.assertListEqual(todos, expected)
 
     def test_latex(self):
         """Test tex-file."""
