@@ -41,7 +41,17 @@ class Test(TestCase):
         pass
 
     def extract_todo(self, file: Path, content: str, expected: List[Tuple[Path, int, str]]):
-        """DOCSTRING."""
+        """Test 'extract_todos' function.
+
+        Parameters
+        ----------
+        file : pathlib.Path
+            Test file path
+        content : str
+            Content of the test file
+        expected : List
+            List of expected todos
+        """
         self.fs.create_file(file, contents=content)
         todos = extract_todos(file)
         self.assertListEqual(todos, expected)
