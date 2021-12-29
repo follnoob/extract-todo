@@ -37,6 +37,10 @@ class DefaultParser:
         self._file = fpath
         self._comment = "//"
 
+        # Multiline comments
+        self._multiline_comment = (r"/\*", r".+\*/")
+        self._multiline_started = False
+
     def _parse_comment(self, text: str) -> str:
         """Extract single line comment from `text`.
 
@@ -54,6 +58,29 @@ class DefaultParser:
         if match:
             return match.group(0)[self._comment_size:].strip()
         return ""
+
+    def _parse_multiline_comment(self, text: str) -> str:
+        """DOCSTRING."""
+        match = None
+
+        # Check if a multiline comment started
+        if not self._multiline_started:
+            match = re.search(rf"{self._multiline_comment[0]}.*", text)
+            if not match:
+                return ""
+            self._multiline_started = True
+
+        comment = text.strip()
+        if match:
+            comment = match.group(0)[self._comment_size:].strip()
+
+        # Check for end of multiline comment
+        match = re.search(rf"{self._multiline_comment[1]}.*", comment)
+        if match:
+            self._multiline_comment = False
+            comment = match.group(0)[:-self._comment_size].strip()
+
+        return comment
 
     def parse(self) -> List[Tuple[Path, int, str]]:
         """Parse file for comments.
