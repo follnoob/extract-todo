@@ -62,10 +62,11 @@ class Test(TestCase):
 \\begin{{document}}
 % TODO test
 Test % TODO test 2
+%TODO test 3
 \\end{{document}}
 """
         fpath = Path("test.tex")
-        corr = [(fpath, 2, "test"), (fpath, 3, "test 2")]
+        corr = [(fpath, 2, "test"), (fpath, 3, "test 2"), (fpath, 4, "test 3")]
 
         self.extract_todo(fpath, content, corr)
 
@@ -77,12 +78,13 @@ Test % TODO test 2
 def main():
     print("Hello World")  # TODO test 2
 
+#TODO test 3
 
 if __name__ == '__main__':
     main()
 """
         fpath = Path("test.py")
-        corr = [(fpath, 1, "test"), (fpath, 4, "test 2")]
+        corr = [(fpath, 1, "test"), (fpath, 4, "test 2"), (fpath, 6, "test 3")]
 
         self.extract_todo(fpath, content, corr)
 

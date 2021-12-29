@@ -34,7 +34,7 @@ class DefaultParser:
     """
 
     def __init__(self, fpath: Path):
-        self._comment = r"//.+"
+        self._comment = "//"
         self._file = fpath
 
     def parse(self) -> List[Tuple[Path, int, str]]:
@@ -47,11 +47,12 @@ class DefaultParser:
             (filename, linenumber, string)
         """
         comments = []
+        size = len(self._comment)
         with self._file.open("r") as f:
             for line, text in enumerate(f, 1):
-                match = re.search(self._comment, text)
+                match = re.search(rf"{self._comment}.+", text)
                 if match:
-                    comment = match.group(0)[2:].strip()
+                    comment = match.group(0)[size:].strip()
                     comments.append((self._file, line, comment))
 
         return comments
