@@ -31,5 +31,5 @@ class PythonParser(DefaultParser):
     """
 
     def __init__(self, fpath: Path):
-        self._comment = r"#.+"
+        self._comment = "#"
         self._file = fpath
