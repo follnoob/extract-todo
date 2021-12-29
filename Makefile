@@ -2,32 +2,24 @@
 PYTHON=python
 PYPI_SERVER=pypi
 
-.PHONY: dist
-dist: sdist wheel
+build:
+	@${PYTHON} -m build
 
-.PHONY: wheel
-wheel:
-	@${PYTHON} setup.py bdist_wheel
-
-.PHONY: sdist
-sdist:
-	@${PYTHON} setup.py sdist
-
-.PHONY: tests
-tests: # Run tests
-	@${PYTHON} -m nose
+.PHONY: test
+test: # Run tests
+	@${PYTHON} -m unittest -b
 
 .PHONY: major
 major: # Bump version
-	@bumpversion major
+	@bumpversion major --allow-dirty
 
 .PHONY: minor
 minor: # Bump version
-	@bumpversion minor
+	@bumpversion minor --allow-dirty
 
 .PHONY: patch
 patch: # Bump version
-	@bumpversion patch
+	@bumpversion patch --allow-dirty
 
 .PHONY: release
 release: clean dist # Package and upload release
@@ -37,4 +29,4 @@ release: clean dist # Package and upload release
 clean:
 	@-rm -rf dist
 	@-rm -rf build
-	@-rm -rf *.egg-info
+	@-rm -rf src/*.egg-info
