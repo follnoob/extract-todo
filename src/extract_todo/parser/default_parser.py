@@ -34,8 +34,26 @@ class DefaultParser:
     """
 
     def __init__(self, fpath: Path):
-        self._comment = "//"
         self._file = fpath
+        self._comment = "//"
+
+    def _parse_comment(self, text: str) -> str:
+        """Extract single line comment from `text`.
+
+        Parameters
+        ----------
+        text : str
+            String to check
+
+        Returns
+        -------
+        str
+            String containing the comments content. Empty string if there is no comment.
+        """
+        match = re.search(rf"{self._comment}.*", text)
+        if match:
+            return match.group(0)[self._comment_size:].strip()
+        return ""
 
     def parse(self) -> List[Tuple[Path, int, str]]:
         """Parse file for comments.
@@ -47,12 +65,11 @@ class DefaultParser:
             (filename, linenumber, string)
         """
         comments = []
-        size = len(self._comment)
+        self._comment_size = len(self._comment)
+
         with self._file.open("r") as f:
             for line, text in enumerate(f, 1):
-                match = re.search(rf"{self._comment}.+", text)
-                if match:
-                    comment = match.group(0)[size:].strip()
-                    comments.append((self._file, line, comment))
+                comment = self._parse_comment(text)
+                comments.append((self._file, line, comment))
 
         return comments
