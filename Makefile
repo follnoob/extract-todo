@@ -5,6 +5,10 @@ PYPI_SERVER=pypi
 build:
 	@${PYTHON} -m build
 
+.PHONY: extract-todo
+extract-todo:
+	git ls-files '**/*.py' -z | xargs -0 extract-todo | cat -s
+
 .PHONY: test
 test: # Run tests
 	@${PYTHON} -m unittest -b
