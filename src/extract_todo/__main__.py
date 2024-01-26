@@ -36,10 +36,11 @@ def main():
             tex-files and Python-files. Currently only 'utf-8' file-encoding is\
             supported.")
     parser.add_argument("files", metavar="file", type=Path, help="Path to file.", nargs='+')
+    parser.add_argument("--match-regex", metavar="match_regex", type=str, help="Regex pattern that todos should match")
     parser.add_argument('-v', '--version', action='version', version='%(prog)s {}'.format(__version__))
     args = parser.parse_args()
     try:
-        todos = [str(Printer(extract_todos(fname))) for fname in args.files]
+        todos = [str(Printer(extract_todos(fname, args.match_regex))) for fname in args.files]
         if todos:
             print('\n'.join(todos))
         else:
