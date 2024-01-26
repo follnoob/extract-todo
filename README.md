@@ -34,6 +34,17 @@ It prints the filename, line number and the TODO text. Example output:
       LINE 1:       test
       LINE 5:       test 2
 
+### Running on all relevant files in a directory
+
+Note that if you want to run this tool on all the supported files in your
+git-managed project, you can run `extract-todo` with no file arguments:
+
+    extract-todo
+
+If you want to limit it to searching certain files, you could do something like this:
+
+    extract-todo --filename-pattern='*.py' --filename-pattern='*.rb'
+
 ## Author and License
 
 Copyright (C) Jens Wilberg July 2021

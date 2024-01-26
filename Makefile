@@ -5,6 +5,10 @@ PYPI_SERVER=pypi
 build:
 	@${PYTHON} -m build
 
+.PHONY: extract-todo
+extract-todo:
+	extract-todo
+
 .PHONY: test
 test: # Run tests
 	@${PYTHON} -m unittest -b
