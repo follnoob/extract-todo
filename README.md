@@ -34,6 +34,21 @@ It prints the filename, line number and the TODO text. Example output:
       LINE 1:       test
       LINE 5:       test 2
 
+### Running on all relevant files in a directory
+
+Note that if you want to run this tool on all the Python files in your
+git-managed project, you could do something like this:
+
+    git ls-files '**/*.py' -z | xargs -0 extract-todo | cat -s
+
+To make this really easy for everyone using your repo, you could add a `Makefile` target that does this automatically:
+
+```Makefile
+.PHONY: extract-todo
+extract-todo:
+	git ls-files '**/*.py' -z | xargs -0 extract-todo | cat -s
+```
+
 ## Author and License
 
 Copyright (C) Jens Wilberg July 2021
