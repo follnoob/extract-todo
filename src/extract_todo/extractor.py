@@ -25,7 +25,7 @@ from typing import List, Tuple
 from .parser import ParserFactory
 
 
-def extract_todos(fpath: Path) -> List[Tuple[Path, int, str]]:
+def extract_todos(fpath: Path, match_regex="") -> List[Tuple[Path, int, str]]:
     """Method for TODO extraction.
 
     Parameters
@@ -44,8 +44,12 @@ def extract_todos(fpath: Path) -> List[Tuple[Path, int, str]]:
     todos = []
     for _, line, text in parser.parse():
         match = re.search(r"TODO[ |\t]*(.*)$", text)
-        if match:
-            todos.append((fpath, line, match.group(1)))
+        if not match:
+            continue
+        if match_regex and not re.search(match_regex, text):
+            continue
+
+        todos.append((fpath, line, match.group(1)))
     return todos
 
 
