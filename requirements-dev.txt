@@ -1,12 +1,8 @@
 # Linting and formatting
-flake8==4.0.1
-autopep8==1.6.0
+flake8==7.0.0
 
 # Unittests
-pyfakefs==4.5.2
+pyfakefs==5.3.5
 
 # Build
-build==0.7.0
-
-# Other
-bumpversion==0.6.0
+build==1.0.3
