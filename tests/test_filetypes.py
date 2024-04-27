@@ -70,6 +70,23 @@ Test % TODO test 2
 
         self.extract_todo(fpath, content, corr)
 
+    def test_printer(self):
+        """Test 'Printer' class."""
+        from extract_todo.extractor import Printer
+
+        todos = [
+            (Path("test.py"), 1, "test"),
+            (Path("test.py"), 4, "test 2"),
+            (Path("test.py"), 6, "test 3"),
+        ]
+        expected = """test.py
+  LINE 1:\ttest
+  LINE 4:\ttest 2
+  LINE 6:\ttest 3
+"""
+        printer = Printer(todos)
+        self.assertEqual(str(printer), expected)
+
     def test_py(self):
         """Test py-file."""
         content = """\
