@@ -7,7 +7,7 @@ build:
 
 .PHONY: extract-todo
 extract-todo:
-	git ls-files '**/*.py' -z | xargs -0 extract-todo | cat -s
+	extract-todo
 
 .PHONY: test
 test: # Run tests
