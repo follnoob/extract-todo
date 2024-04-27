@@ -57,8 +57,10 @@ def main():
             the beginning of a single line comment. Supported files are LaTex\
             tex-files and Python-files. Currently only 'utf-8' file-encoding is\
             supported.")
+
     parser.add_argument("files", metavar="file", type=Path,
                         help="Path to file. If not given, search through all files in git", nargs='*')
+    parser.add_argument("--match-regex", metavar="match_regex", type=str, help="Regex pattern that todos should match")
     parser.add_argument('-v', '--version', action='version', version='%(prog)s {}'.format(__version__))
     parser.add_argument('--filename-pattern', metavar="PATTERN", type=str, action="append",
                         help="Limit search to filenames matching PATTERN. Can be specified multiple times. "
@@ -70,7 +72,7 @@ def main():
         else:
            files = args.files
 
-        all_todos = [extract_todos(fname) for fname in files]
+        all_todos = [extract_todos(fname, args.match_regex) for fname in files]
         todos_str = [str(Printer(todos)) for todos in all_todos if todos]
         if todos_str:
             print('\n'.join(todos_str).strip())
