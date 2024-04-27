@@ -40,7 +40,7 @@ class Test(TestCase):
         """Tear down test fixtures, if any."""
         pass
 
-    def extract_todo(self, file: Path, content: str, expected: List[Tuple[Path, int, str]]):
+    def extract_todo(self, file: Path, content: str, expected: List[Tuple[Path, int, str]], match_regex=""):
         """Test 'extract_todos' function.
 
         Parameters
@@ -53,7 +53,7 @@ class Test(TestCase):
             List of expected todos
         """
         self.fs.create_file(file, contents=content)
-        todos = extract_todos(file)
+        todos = extract_todos(file, match_regex=match_regex)
         self.assertListEqual(todos, expected)
 
     def test_latex(self):
@@ -87,6 +87,26 @@ if __name__ == '__main__':
         corr = [(fpath, 1, "test"), (fpath, 4, "test 2"), (fpath, 6, "test 3")]
 
         self.extract_todo(fpath, content, corr)
+
+    def test_py_with_match_regex(self):
+        """Test py-file with match_regex."""
+        content = """\
+# TODO test
+
+def main():
+    print("Hello World")  # TODO test 2
+    print("Hello World again")  # TODO test 2 again
+    print("Hello World!")  # Plain comment
+
+#TODO test 3
+
+if __name__ == '__main__':
+    main()
+"""
+        fpath = Path("test.py")
+        corr = [(fpath, 4, "test 2"), (fpath, 5, "test 2 again")]
+
+        self.extract_todo(fpath, content, corr, match_regex="test 2")
 
     def test_h(self):
         """Test h-file."""
