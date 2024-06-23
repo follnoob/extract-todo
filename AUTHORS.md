@@ -6,4 +6,4 @@
 
 ## Contributors
 
-None yet. Why not be the first?
+See https://github.com/follnoob/extract-todo/graphs/contributors for a list of all contributors.
