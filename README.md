@@ -1,7 +1,6 @@
 # extract-todo
 
 ![Python build](https://github.com/follnoob/extract-todo/workflows/Python%20build/badge.svg)
-![pypi version](https://img.shields.io/pypi/v/extract-todo)
 
 extract-todo is a simple commandline tool for the extraction of TODOs.
 It can extract TODOs from single-line-comments like:

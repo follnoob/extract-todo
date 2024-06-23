@@ -1,6 +1,5 @@
 # Config
 PYTHON=python
-PYPI_SERVER=pypi
 
 build:
 	@${PYTHON} -m build
@@ -24,10 +23,6 @@ test: # Run tests
 # .PHONY: patch
 # patch: # Bump version
 # 	@bumpversion patch --allow-dirty
-
-.PHONY: release
-release: clean dist # Package and upload release
-	@twine upload -r $(PYPI_SERVER) dist/*
 
 .PHONY: clean
 clean:
