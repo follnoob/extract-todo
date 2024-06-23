@@ -32,6 +32,7 @@ from .parser import ParserFactory
 
 __version__ = VERSION_STRING
 
+
 def get_default_glob_patterns():
     supported_extensions = ParserFactory()._builders.keys()
     default_glob_patterns = ["*" + extension for extension in supported_extensions]
@@ -49,6 +50,7 @@ def get_files_from_git(glob_patterns: Optional[List[str]] = None):
             files.append(Path(entry.path))
 
     return files
+
 
 def main():
     """Main function as entry point."""
@@ -70,7 +72,7 @@ def main():
         if len(args.files) == 0:
             files = get_files_from_git(args.filename_pattern)
         else:
-           files = args.files
+            files = args.files
 
         all_todos = [extract_todos(fname, args.match_regex) for fname in files]
         todos_str = [str(Printer(todos)) for todos in all_todos if todos]
