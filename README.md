@@ -6,16 +6,25 @@ extract-todo is a simple commandline tool for the extraction of TODOs.
 It can extract TODOs from single-line-comments like:
 
 ```python
-    # TODO something todo
+    # TODO An example todo for python
 ```
 
 It prints the file, line number and the TODO text.
 
 ## Installation
 
-You need python3+ to run this tool. It can be installed from pypi with
+You can build an installable package with the command
 
-    pip install extract-todo
+    python -m build
+
+The resulting package can then be installed with
+
+    pip install extract_todo-<version>-py3-none-any.whl
+
+Alternatively you can install `extract-todo` directly from source by running
+following command from the root of this project
+
+    pip install
 
 ## Usage
 

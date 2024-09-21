@@ -6,4 +6,5 @@
 
 ## Contributors
 
-See https://github.com/follnoob/extract-todo/graphs/contributors for a list of all contributors.
+See https://github.com/follnoob/extract-todo/graphs/contributors for a list of
+all contributors.
