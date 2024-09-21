@@ -1,5 +1,12 @@
 # Changelog
 
+## Version 0.4.0 from 2024/09/21
+
+- Drop official support for python versions: 3.6, 3.7
+- Add official support for python versions: 3.10, 3.11, 3.12
+- Add flag `--match-regex`
+- Add functionality to run on all supported file of a git repo
+
 ## Version 0.3.1 from 2020/06/26
 
 - Fixed outdated Readme
