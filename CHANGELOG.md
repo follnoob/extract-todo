@@ -1,5 +1,10 @@
 # Changelog
 
+## Version 0.4.x (Unreleased)
+
+- Drop official support for python versions: 3.8, 3.9
+- Add official support for python versions: 3.13, 3.14
+
 ## Version 0.4.0 from 2024/09/21
 
 - Drop official support for python versions: 3.6, 3.7
