@@ -1,8 +1,0 @@
-# Linting and formatting
-flake8==7.0.0
-
-# Unittests
-pyfakefs==5.3.5
-
-# Build
-build==1.0.3
