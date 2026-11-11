@@ -20,6 +20,7 @@
 Currently only 'utf-8' file-encoding is supported.
 """
 import argparse
+import re
 from fnmatch import fnmatch
 from pathlib import Path
 from typing import List, Optional
@@ -68,6 +69,11 @@ def main():
                         help="Limit search to filenames matching PATTERN. Can be specified multiple times. "
                              "Used only if no files specified.")
     args = parser.parse_args()
+    if args.match_regex:
+        try:
+            re.compile(args.match_regex)
+        except re.error as e:
+            parser.error("invalid --match-regex {!r}: {}".format(args.match_regex, e))
     try:
         if len(args.files) == 0:
             files = get_files_from_git(args.filename_pattern)
